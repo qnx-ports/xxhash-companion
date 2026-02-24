@@ -1,0 +1,28 @@
+# Contributor: Leo <thinkabit.ukim@gmail.com>
+# Contributor: Stuart Cardall <developer@it-offshore.co.uk>
+# Maintainer: Natanael Copa <ncopa@alpinelinux.org>
+pkgname=xxhash
+pkgver=0.8.3
+pkgrel=0
+pkgdesc="Extremely fast non-cryptographic hash algorithm"
+url="https://cyan4973.github.io/xxHash/"
+arch="all"
+license="BSD-2-Clause"
+subpackages="$pkgname-dev $pkgname-doc lib$pkgname:libs"
+source="$pkgname-$pkgver.tar.gz::https://github.com/Cyan4973/xxHash/archive/v$pkgver.tar.gz fix-qnx.patch"
+builddir="$srcdir/xxHash-$pkgver"
+
+build() {
+    export CFLAGS="$CFLAGS -DXXH_FORCE_MEMORY_ACCESS=1 -flto=auto -O2"
+    make
+}
+
+package() {
+    make DESTDIR="$pkgdir" PREFIX=/usr install
+    rm -rf "$pkgdir"/usr/lib/libxxhash.a
+}
+
+sha512sums="
+8b5c8b9aad4e869f28310b12cc314037feda81d92f26c23eaecdb35dc65042ca2e65f2e9606033e62a31bcc737a9a950500ffcbdb8677d6ab20e820ea14f2b79  xxhash-0.8.3.tar.gz
+6da9d2034f30e4227dc43350d7b217e93a580bec6afb22755b3c40a78edc592c7a86a96b9f993459b19965078065504cfab87f0de8b867d91660320c54913d4b  fix-qnx.patch
+"

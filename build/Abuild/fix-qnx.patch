@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 5b7b8ff..484fd33 100644
+--- a/Makefile
++++ b/Makefile
+@@ -539,7 +539,7 @@ lint-unicode:
+ # =========================================================
+ # make install is validated only for the following targets
+ # =========================================================
+-ifneq (,$(filter Linux Darwin GNU/kFreeBSD GNU Haiku OpenBSD FreeBSD NetBSD DragonFly SunOS CYGWIN% , $(UNAME)))
++ifneq (,$(filter Linux Darwin GNU/kFreeBSD GNU Haiku OpenBSD FreeBSD NetBSD DragonFly SunOS CYGWIN QNX% , $(UNAME)))
+ 
+ DESTDIR     ?=
+ # directory variables: GNU conventions prefer lowercase
