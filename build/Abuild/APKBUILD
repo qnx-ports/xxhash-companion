@@ -3,7 +3,7 @@
 # Maintainer: Natanael Copa <ncopa@alpinelinux.org>
 pkgname=xxhash
 pkgver=0.8.3
-pkgrel=${pkgrel:-0}
+pkgrel=0
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
 url="https://cyan4973.github.io/xxHash/"
 arch="all"
@@ -22,7 +22,6 @@ package() {
     rm -rf "$pkgdir"/usr/lib/libxxhash.a
 }
 
-options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 8b5c8b9aad4e869f28310b12cc314037feda81d92f26c23eaecdb35dc65042ca2e65f2e9606033e62a31bcc737a9a950500ffcbdb8677d6ab20e820ea14f2b79  xxhash-0.8.3.tar.gz
 6da9d2034f30e4227dc43350d7b217e93a580bec6afb22755b3c40a78edc592c7a86a96b9f993459b19965078065504cfab87f0de8b867d91660320c54913d4b  fix-qnx.patch
